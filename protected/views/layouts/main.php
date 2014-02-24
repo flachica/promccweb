@@ -15,7 +15,6 @@
 <div class="container-fluid" id="page">
 	<div class="row-fluid">
 		<div class="span12">
-
 	<?php $this->widget('bootstrap.widgets.TbNavbar', array(
 					 'brandLabel' => 'Panel de Administración',
 					 'display' => null, // default is static to top

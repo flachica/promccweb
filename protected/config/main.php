@@ -8,7 +8,8 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'PromoShop Panel Administración',
-	'sourceLanguage' => 'es',
+	'sourceLanguage' => '00',
+   'language' => 'es',
    // preloading 'log' component
 	'preload'=>array('log'),
 
@@ -59,7 +60,6 @@ return array(
           'appLayout'=>'application.views.layouts.main', // Application layout. 
           'cssFile'=>'rights.css', // Style sheet file to use for Rights. 
           'debug'=>false, // Whether to enable debug mode. 
-
       ), 
 	),
 
