@@ -25,7 +25,7 @@ $this->pageTitle=Yii::app()->name . ' - Contact Us';
 
          <div class="form">
 
-         <?php $form=$this->beginWidget('CActiveForm', array(
+         <?php $form=$this->beginWidget('TbActiveForm', array(
 	         'id'=>'contact-form',
 	         'enableClientValidation'=>true,
 	         'clientOptions'=>array(

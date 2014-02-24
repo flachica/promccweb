@@ -13,7 +13,7 @@ $this->breadcrumbs=array(
 
 <div class="form">
 
-<?php $form=$this->beginWidget('CActiveForm', array(
+<?php $form=$this->beginWidget('TbActiveForm', array(
 	'id'=>'account-form',
 	'enableClientValidation'=>true,
 	'enableAjaxValidation'=>false,

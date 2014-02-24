@@ -24,6 +24,7 @@ return array(
 		'bootstrap.helpers.TbArray',
 		'bootstrap.behaviors.TbWidget',
 		'bootstrap.widgets.TbDataColumn',
+      'bootstrap.widgets.TbActiveForm',
 	),
 
 	'modules'=>array(
@@ -54,6 +55,12 @@ return array(
       'mailer'=>array(
         'class'=>'ext.mail.Mailer',
          'backend'=>'mail',
+         'mimeParams'=>array(
+            'text_encoding' => '7bit',
+           'text_charset'  => 'UTF-8',
+           'html_charset'  => 'UTF-8',
+           'head_charset'  => 'UTF-8'
+         ),
         ),
 		// uncomment the following to enable URLs in path-format
 		/*

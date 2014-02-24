@@ -78,7 +78,7 @@ class Account extends CActiveRecord
 		{
 			$this->_identity=new UserIdentity($this->email,$this->password);
 			if(!$this->_identity->authenticate())
-				$this->addError('password','Incorrect email or password.');
+				$this->addError('password','Email o contraseña incorrectos.');
 		}
 	}
 
