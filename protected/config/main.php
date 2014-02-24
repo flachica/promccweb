@@ -24,8 +24,7 @@ return array(
 		'bootstrap.helpers.TbHtml',
 		'bootstrap.helpers.TbArray',
 		'bootstrap.behaviors.TbWidget',
-		'bootstrap.widgets.TbDataColumn',
-      'bootstrap.widgets.TbActiveForm',
+		'bootstrap.widgets.*',
       'application.modules.rights.*',
       'application.modules.rights.components.*',
       'application.modules.account.models.*'
@@ -44,7 +43,7 @@ return array(
             'defaultController'=>'account',
         ),
       'rights'=>array( 
-          'superuserName'=>'fernandolachica@gmail.com', // Name of the role with super user privileges. 
+          'superuserName'=>'Administrador', // Name of the role with super user privileges. 
           'authenticatedName'=>'Authenticated', // Name of the authenticated user role.
           'userClass' => 'Account',  
           'userIdColumn'=>'id', // Name of the user id column in the database. 
@@ -89,7 +88,7 @@ return array(
          ),
         ),
 		// uncomment the following to enable URLs in path-format
-		/*
+		
 		'urlManager'=>array(
 			'urlFormat'=>'path',
 			'rules'=>array(
@@ -98,7 +97,7 @@ return array(
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 			),
 		),
-		*/
+		
 		// development environment
       'db'=>array(
 			'connectionString' => 'mysql:host=localhost;dbname=promoshop',

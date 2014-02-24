@@ -74,7 +74,7 @@ class AssignmentController extends RController
 		));
 	}
 
-	/**
+   /**
 	* Displays the authorization assignments for an user.
 	*/
 	public function actionUser()

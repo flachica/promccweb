@@ -7,8 +7,7 @@
 		<?php if( $this->id!=='install' ): ?>
 
 			<div id="menu">
-
-				<?php $this->renderPartial('/_menu'); ?>
+            <?php $this->renderPartial('/_menu'); ?>
 
 			</div>
 

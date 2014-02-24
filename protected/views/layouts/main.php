@@ -15,7 +15,9 @@
 <div class="container-fluid" id="page">
 	<div class="row-fluid">
 		<div class="span12">
-	<?php $this->widget('bootstrap.widgets.TbNavbar', array(
+	<?php 
+         $isSuperUser = Yii::app()->user->name;
+         $this->widget('bootstrap.widgets.TbNavbar', array(
 					 'brandLabel' => 'Panel de Administración',
 					 'display' => null, // default is static to top
 					 'items' => array(
@@ -23,6 +25,7 @@
 								'class' => 'bootstrap.widgets.TbNav',
 								'items' => array(
 								    array('label' => 'Inicio', 'url' => array('/site/index')),
+									 array('label' => 'Roles Usuario', 'url' => array('/rights/assignment/view'),'visible'=>Yii::app()->user->checkAccess('Administrador')),
 									 array('label'=>'Registro', 'url'=>array('/account/account/register'), 'visible'=>Yii::app()->user->isGuest),
                            array('label'=>'Login', 'url'=>array('/account/account/login'), 'visible'=>Yii::app()->user->isGuest),
                            array('label'=>'Mi Cuenta', 'url'=>array('/account/account/account'), 'visible'=>!Yii::app()->user->isGuest),

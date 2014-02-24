@@ -11,7 +11,7 @@
 		<?php echo Rights::t('core', 'Here you can view which permissions has been assigned to each user.'); ?>
 	</p>
 
-	<?php $this->widget('zii.widgets.grid.CGridView', array(
+	<?php $this->widget('TbGridView', array(
 	    'dataProvider'=>$dataProvider,
 	    'template'=>"{items}\n{pager}",
 	    'emptyText'=>Rights::t('core', 'No users found.'),
