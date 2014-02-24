@@ -9,7 +9,7 @@ return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'PromoShop Panel Administración',
 	'sourceLanguage' => 'es',
-	// preloading 'log' component
+   // preloading 'log' component
 	'preload'=>array('log'),
 
 	// path aliases
@@ -110,5 +110,6 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'fernando@desarrollo.wion.es',
+      'alertEmail' => 'fernandolachica@gmail.com',
 	),
 );

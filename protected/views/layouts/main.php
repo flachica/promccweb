@@ -11,22 +11,10 @@
 </head>
 
 <body>
-
+<div class="wrap">
 <div class="container-fluid" id="page">
 	<div class="row-fluid">
 		<div class="span12">
-
-	<!-- <div id="mainmenu">
-		<?php $this->widget('zii.widgets.CMenu',array(
-			'items'=>array(
-				array('label'=>'Home', 'url'=>array('/site/index')),
-				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
-				array('label'=>'Contact', 'url'=>array('/site/contact')),
-				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
-			),
-		)); ?>
-	</div><!-- mainmenu -->
 
 	<?php $this->widget('bootstrap.widgets.TbNavbar', array(
 					 'brandLabel' => 'Panel de Administración',
@@ -36,10 +24,11 @@
 								'class' => 'bootstrap.widgets.TbNav',
 								'items' => array(
 								    array('label' => 'Inicio', 'url' => array('/site/index')),
-									 //array('label'=>'Register', 'url'=>array('/account/account/register'), 'visible'=>Yii::app()->user->isGuest),
+									 array('label'=>'Registro', 'url'=>array('/account/account/register'), 'visible'=>Yii::app()->user->isGuest),
                            array('label'=>'Login', 'url'=>array('/account/account/login'), 'visible'=>Yii::app()->user->isGuest),
                            array('label'=>'Mi Cuenta', 'url'=>array('/account/account/account'), 'visible'=>!Yii::app()->user->isGuest),
-                           array('label'=>'Salir ('.Yii::app()->user->name.')', 'url'=>array('/account/account/logout'), 'visible'=>!Yii::app()->user->isGuest)
+                           array('label'=>'Contacto', 'url'=>array('/site/contact'), 'visible'=>true),
+                           array('label'=>'Salir ('.Yii::app()->user->name.')', 'url'=>array('/account/account/logout'), 'visible'=>!Yii::app()->user->isGuest),
 								),
 						  ),
 					 ),
@@ -50,14 +39,13 @@
                  $flashes .= '<div class="flash-' . $key . '">' . $message . "</div>\n";
              } 
             if ($flashes != "")
-               $this->widget('bootstrap.widgets.TbHeroUnit', array(
-		             'heading' => 'Atención',
-		             'content' => $flashes,
-	            )); ?>
+               echo TbHtml::alert(TbHtml::ALERT_COLOR_INFO, $flashes);
+ ?>
 	<?php echo $content; ?>
 	</div><!-- span12 -->
 	</div><!-- row -->
 	</div><!-- container page -->
+</div>
 	<footer class="footer">
 		<div class="container">
             <p>Copyright &copy; <?php echo date('Y'); ?> de Wion.

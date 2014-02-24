@@ -74,11 +74,20 @@ class AccountController extends Controller
 				Yii::app()->mailer->sendMIME(
 					Yii::app()->name.' <'.Yii::app()->params['adminEmail'].'>',
 					$model->email,
-					'Registration at '.Yii::app()->name,
+					'Registro en '.Yii::app()->name,
 					'',
 					$this->renderPartial('/verification/register', array(
 						'verification'=>$verification,
 					), true)
+				);
+
+            // Send verification mail
+				Yii::app()->mailer->sendMIME(
+					Yii::app()->name.' <'.Yii::app()->params['alertEmail'].'>',
+					Yii::app()->params['alertEmail'],
+					'Nuevo registro en '.Yii::app()->name . ' de ' . $model->email,
+					'Nuevo registro en '.Yii::app()->name . ' de ' . $model->email,
+					'Nuevo registro en '.Yii::app()->name . ' de ' . $model->email
 				);
 				
 				// Login
