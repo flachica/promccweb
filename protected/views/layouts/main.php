@@ -36,21 +36,31 @@
 								'class' => 'bootstrap.widgets.TbNav',
 								'items' => array(
 								    array('label' => 'Inicio', 'url' => array('/site/index')),
-									 array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-					   			 array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
-								    array('label' => 'Link', 'url' => '#'),
-								    array('label' => 'Link', 'url' => '#'),
+									 //array('label'=>'Register', 'url'=>array('/account/account/register'), 'visible'=>Yii::app()->user->isGuest),
+                           array('label'=>'Login', 'url'=>array('/account/account/login'), 'visible'=>Yii::app()->user->isGuest),
+                           array('label'=>'Mi Cuenta', 'url'=>array('/account/account/account'), 'visible'=>!Yii::app()->user->isGuest),
+                           array('label'=>'Salir ('.Yii::app()->user->name.')', 'url'=>array('/account/account/logout'), 'visible'=>!Yii::app()->user->isGuest)
 								),
 						  ),
 					 ),
 				)); ?>
+             <?php 
+             $flashes = "";
+             foreach(Yii::app()->user->getFlashes() as $key => $message) {
+                 $flashes .= '<div class="flash-' . $key . '">' . $message . "</div>\n";
+             } 
+            if ($flashes != "")
+               $this->widget('bootstrap.widgets.TbHeroUnit', array(
+		             'heading' => 'Atención',
+		             'content' => $flashes,
+	            )); ?>
 	<?php echo $content; ?>
 	</div><!-- span12 -->
 	</div><!-- row -->
 	</div><!-- container page -->
 	<footer class="footer">
 		<div class="container">
-				<p>Copyright &copy; <?php echo date('Y'); ?> de Wion.
+            <p>Copyright &copy; <?php echo date('Y'); ?> de Wion.
 				Todos los derechos reservados. <?php echo Yii::powered() . " & "; ?> <a href="https://twitter.com/FernandoLaChica" rel="external">@FernandoLaChica</a></p>
 		</div>
 	</footer>

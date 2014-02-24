@@ -23,6 +23,7 @@ return array(
 		'bootstrap.helpers.TbHtml',
 		'bootstrap.helpers.TbArray',
 		'bootstrap.behaviors.TbWidget',
+		'bootstrap.widgets.TbDataColumn',
 	),
 
 	'modules'=>array(
@@ -34,6 +35,9 @@ return array(
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
 			//'ipFilters'=>array('127.0.0.1','::1'),
 		),
+		'account'=>array(
+            'defaultController'=>'account',
+        ),
 	),
 
 	// application components
@@ -41,9 +45,15 @@ return array(
 		'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
+			'loginUrl'=>array('/account/account/login'),
 		),
 		'bootstrap' => array(
             'class' => 'bootstrap.components.TbApi',   
+      ),
+      
+      'mailer'=>array(
+        'class'=>'ext.mail.Mailer',
+         'backend'=>'mail',
         ),
 		// uncomment the following to enable URLs in path-format
 		/*
@@ -99,6 +109,6 @@ return array(
 	// using Yii::app()->params['paramName']
 	'params'=>array(
 		// this is used in contact page
-		'adminEmail'=>'webmaster@example.com',
+		'adminEmail'=>'fernando@desarrollo.wion.es',
 	),
 );
