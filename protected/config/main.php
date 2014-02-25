@@ -27,7 +27,7 @@ return array(
 		'bootstrap.widgets.*',
       'application.modules.rights.*',
       'application.modules.rights.components.*',
-      'application.modules.account.models.*'
+      'application.modules.account.models.*',
 	),
 
 	'modules'=>array(
@@ -143,5 +143,7 @@ return array(
 		// this is used in contact page
 		'adminEmail'=>'fernando@desarrollo.wion.es',
       'alertEmail' => 'fernandolachica@gmail.com',
+      'modelJSONAvailables' => array('Centrocomercial'),
+      'pageSizeJSON' => 50,
 	),
 );
