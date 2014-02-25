@@ -8,8 +8,8 @@
  * @property string $nombre
  * @property string $descripcion
  * @property string $foto
- * @property integer $latitud
- * @property integer $longitud
+ * @property decimal $latitud
+ * @property decimal $longitud
  * @property string $direccion
  * @property string $poblacion
  * @property string $provincia
@@ -36,7 +36,7 @@ class Centrocomercial extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('latitud, longitud', 'numerical', 'integerOnly'=>true),
+			array('latitud, longitud', 'numerical', 'integerOnly'=>false),
 			array('nombre', 'length', 'max'=>45),
 			array('descripcion, foto, direccion, poblacion, provincia', 'length', 'max'=>4000),
 			array('activo', 'length', 'max'=>1),
@@ -64,7 +64,7 @@ class Centrocomercial extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'idcentrocomercial' => 'Idcentrocomercial',
+			'idcentrocomercial' => 'ID',
 			'nombre' => 'Nombre',
 			'descripcion' => 'Descripcion',
 			'foto' => 'Foto',

@@ -38,6 +38,7 @@ class Tienda extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('idcentrocomercial, idaccount, latitud, longitud', 'numerical', 'integerOnly'=>true),
+			array('latitud, longitud', 'numerical', 'integerOnly'=>false),
 			array('nombre', 'length', 'max'=>45),
 			array('descripcion, foto', 'length', 'max'=>4000),
 			array('activo', 'length', 'max'=>1),
