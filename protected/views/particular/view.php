@@ -10,15 +10,15 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Particular', 'url'=>array('index')),
-	array('label'=>'Create Particular', 'url'=>array('create')),
-	array('label'=>'Update Particular', 'url'=>array('update', 'id'=>$model->idparticular)),
-	array('label'=>'Delete Particular', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->idparticular),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Particular', 'url'=>array('admin')),
+	array('label'=>'Listar Clientes', 'url'=>array('index')),
+	array('label'=>'Crear Cliente', 'url'=>array('create')),
+	array('label'=>'Actualizar Cliente', 'url'=>array('update', 'id'=>$model->idparticular)),
+	array('label'=>'Eliminar Cliente', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->idparticular),'confirm'=>'¿Seguro que desea eliminar el registro?')),
+	array('label'=>'Administrar Cliente', 'url'=>array('admin')),
 );
 ?>
 
-<h1>View Particular #<?php echo $model->idparticular; ?></h1>
+<h1>Ver Cliente #<?php echo $model->idparticular; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView',array(
     'htmlOptions' => array(

@@ -10,15 +10,15 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Oferta', 'url'=>array('index')),
-	array('label'=>'Create Oferta', 'url'=>array('create')),
-	array('label'=>'Update Oferta', 'url'=>array('update', 'id'=>$model->idoferta)),
-	array('label'=>'Delete Oferta', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->idoferta),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Oferta', 'url'=>array('admin')),
+	array('label'=>'Listar Ofertas', 'url'=>array('index')),
+	array('label'=>'Crear Oferta', 'url'=>array('create')),
+	array('label'=>'Actualizar Oferta', 'url'=>array('update', 'id'=>$model->idoferta)),
+	array('label'=>'Eliminar Oferta', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->idoferta),'confirm'=>'¿Seguro que desea eliminar el registro?')),
+	array('label'=>'Administrar Ofertas', 'url'=>array('admin')),
 );
 ?>
 
-<h1>View Oferta #<?php echo $model->idoferta; ?></h1>
+<h1>Ver Oferta #<?php echo $model->idoferta; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView',array(
     'htmlOptions' => array(

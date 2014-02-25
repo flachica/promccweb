@@ -9,8 +9,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create Oferta','url'=>array('create')),
-	array('label'=>'Manage Oferta','url'=>array('admin')),
+	array('label'=>'Crear Oferta','url'=>array('create')),
+	array('label'=>'Administrar Ofertas','url'=>array('admin')),
 );
 ?>
 

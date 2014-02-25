@@ -11,13 +11,13 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Tienda', 'url'=>array('index')),
-	array('label'=>'Create Tienda', 'url'=>array('create')),
-	array('label'=>'View Tienda', 'url'=>array('view', 'id'=>$model->idtienda)),
-	array('label'=>'Manage Tienda', 'url'=>array('admin')),
+	array('label'=>'Listar Tiendas', 'url'=>array('index')),
+	array('label'=>'Crear Tienda', 'url'=>array('create')),
+	array('label'=>'Ver Tienda', 'url'=>array('view', 'id'=>$model->idtienda)),
+	array('label'=>'Administrar Tiendas', 'url'=>array('admin')),
 );
 ?>
 
-    <h1>Update Tienda <?php echo $model->idtienda; ?></h1>
+    <h1>Actualizar Tienda <?php echo $model->idtienda; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

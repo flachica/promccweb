@@ -10,15 +10,15 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Tienda', 'url'=>array('index')),
-	array('label'=>'Create Tienda', 'url'=>array('create')),
-	array('label'=>'Update Tienda', 'url'=>array('update', 'id'=>$model->idtienda)),
-	array('label'=>'Delete Tienda', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->idtienda),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Tienda', 'url'=>array('admin')),
+	array('label'=>'Listar Tiendas', 'url'=>array('index')),
+	array('label'=>'Crear Tienda', 'url'=>array('create')),
+	array('label'=>'Actualizar Tienda', 'url'=>array('update', 'id'=>$model->idtienda)),
+	array('label'=>'Eliminar Tienda', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->idtienda),'confirm'=>'¿Seguro que desea eliminar el registro?')),
+	array('label'=>'Administrar Tiendas', 'url'=>array('admin')),
 );
 ?>
 
-<h1>View Tienda #<?php echo $model->idtienda; ?></h1>
+<h1>Ver Tienda #<?php echo $model->idtienda; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView',array(
     'htmlOptions' => array(

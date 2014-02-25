@@ -10,15 +10,15 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Centrocomercial', 'url'=>array('index')),
-	array('label'=>'Create Centrocomercial', 'url'=>array('create')),
-	array('label'=>'Update Centrocomercial', 'url'=>array('update', 'id'=>$model->idcentrocomercial)),
-	array('label'=>'Delete Centrocomercial', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->idcentrocomercial),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Centrocomercial', 'url'=>array('admin')),
+	array('label'=>'Listar Centros comerciales', 'url'=>array('index')),
+	array('label'=>'Crear Centro comercial', 'url'=>array('create')),
+	array('label'=>'Actualizar Centro comercial', 'url'=>array('update', 'id'=>$model->idcentrocomercial)),
+	array('label'=>'Eliminar Centro comercial', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->idcentrocomercial),'confirm'=>'¿Seguro/a que desea eliminar el registro?')),
+	array('label'=>'Administrar Centros comerciales', 'url'=>array('admin')),
 );
 ?>
 
-<h1>View Centrocomercial #<?php echo $model->idcentrocomercial; ?></h1>
+<h1>Ver Centro comercial #<?php echo $model->idcentrocomercial; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView',array(
     'htmlOptions' => array(

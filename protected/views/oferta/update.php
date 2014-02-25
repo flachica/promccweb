@@ -11,13 +11,13 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Oferta', 'url'=>array('index')),
-	array('label'=>'Create Oferta', 'url'=>array('create')),
-	array('label'=>'View Oferta', 'url'=>array('view', 'id'=>$model->idoferta)),
-	array('label'=>'Manage Oferta', 'url'=>array('admin')),
+	array('label'=>'Listar Ofertas', 'url'=>array('index')),
+	array('label'=>'Crear Oferta', 'url'=>array('create')),
+	array('label'=>'Ver Oferta', 'url'=>array('view', 'id'=>$model->idoferta)),
+	array('label'=>'Administrar Ofertas', 'url'=>array('admin')),
 );
 ?>
 
-    <h1>Update Oferta <?php echo $model->idoferta; ?></h1>
+    <h1>Actualizar Oferta <?php echo $model->idoferta; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

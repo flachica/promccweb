@@ -10,11 +10,11 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Canjeo', 'url'=>array('index')),
-	array('label'=>'Manage Canjeo', 'url'=>array('admin')),
+	array('label'=>'Listar Canjeos', 'url'=>array('index')),
+	array('label'=>'Administrar Canjeos', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Canjeo</h1>
+<h1>Crear Canjeo</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

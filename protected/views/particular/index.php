@@ -9,12 +9,12 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create Particular','url'=>array('create')),
-	array('label'=>'Manage Particular','url'=>array('admin')),
+	array('label'=>'Crear Cliente','url'=>array('create')),
+	array('label'=>'Administrar Clientes','url'=>array('admin')),
 );
 ?>
 
-<h1>Particulars</h1>
+<h1>Clientes</h1>
 
 <?php $this->widget('bootstrap.widgets.TbListView',array(
 	'dataProvider'=>$dataProvider,

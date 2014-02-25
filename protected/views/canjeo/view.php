@@ -10,15 +10,15 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Canjeo', 'url'=>array('index')),
-	array('label'=>'Create Canjeo', 'url'=>array('create')),
-	array('label'=>'Update Canjeo', 'url'=>array('update', 'id'=>$model->idcanjeo)),
-	array('label'=>'Delete Canjeo', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->idcanjeo),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Canjeo', 'url'=>array('admin')),
+	array('label'=>'Listar Canjeos', 'url'=>array('index')),
+	array('label'=>'Crear Canjeo', 'url'=>array('create')),
+	array('label'=>'Actualizar Canjeo', 'url'=>array('update', 'id'=>$model->idcanjeo)),
+	array('label'=>'Eliminar Canjeo', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->idcanjeo),'confirm'=>'¿Seguro/a que desea eliminar el registro?')),
+	array('label'=>'Administrar Canjeos', 'url'=>array('admin')),
 );
 ?>
 
-<h1>View Canjeo #<?php echo $model->idcanjeo; ?></h1>
+<h1>Ver Canjeo #<?php echo $model->idcanjeo; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView',array(
     'htmlOptions' => array(

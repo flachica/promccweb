@@ -9,8 +9,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Canjeo', 'url'=>array('index')),
-	array('label'=>'Create Canjeo', 'url'=>array('create')),
+	array('label'=>'Listar Canjeos', 'url'=>array('index')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -27,15 +26,15 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Canjeos</h1>
+<h1>Administrar Canjeos</h1>
 
 <p>
-    You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>
+    Opcionalmente puede utilizar los operadores de comparación (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>
         &lt;&gt;</b>
-or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
+or <b>=</b>) al principio de cada valor de búsqueda.
 </p>
 
-<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button btn')); ?>
+<?php echo CHtml::link('Búsqueda avanzada','#',array('class'=>'search-button btn')); ?>
 <div class="search-form" style="display:none">
 <?php $this->renderPartial('_search',array(
 	'model'=>$model,

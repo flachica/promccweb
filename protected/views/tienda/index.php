@@ -9,8 +9,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create Tienda','url'=>array('create')),
-	array('label'=>'Manage Tienda','url'=>array('admin')),
+	array('label'=>'Crear Tienda','url'=>array('create')),
+	array('label'=>'Administrar Tiendas','url'=>array('admin')),
 );
 ?>
 

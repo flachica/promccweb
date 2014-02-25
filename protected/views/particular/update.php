@@ -11,13 +11,13 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Particular', 'url'=>array('index')),
-	array('label'=>'Create Particular', 'url'=>array('create')),
-	array('label'=>'View Particular', 'url'=>array('view', 'id'=>$model->idparticular)),
-	array('label'=>'Manage Particular', 'url'=>array('admin')),
+	array('label'=>'Listar Clientes', 'url'=>array('index')),
+	array('label'=>'Crear Cliente', 'url'=>array('create')),
+	array('label'=>'Ver Cliente', 'url'=>array('view', 'id'=>$model->idparticular)),
+	array('label'=>'Administrar Clientes', 'url'=>array('admin')),
 );
 ?>
 
-    <h1>Update Particular <?php echo $model->idparticular; ?></h1>
+    <h1>Actualizar Cliente <?php echo $model->idparticular; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

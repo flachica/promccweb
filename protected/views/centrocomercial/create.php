@@ -10,11 +10,11 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Centrocomercial', 'url'=>array('index')),
-	array('label'=>'Manage Centrocomercial', 'url'=>array('admin')),
+	array('label'=>'Lista Centros comerciales', 'url'=>array('index')),
+	array('label'=>'Administrar Centros comerciales', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Centrocomercial</h1>
+<h1>Crear Centro comercial</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

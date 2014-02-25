@@ -10,11 +10,11 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Particular', 'url'=>array('index')),
-	array('label'=>'Manage Particular', 'url'=>array('admin')),
+	array('label'=>'Listar Clientes', 'url'=>array('index')),
+	array('label'=>'Administrar Clientes', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Particular</h1>
+<h1>Crear Cliente</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

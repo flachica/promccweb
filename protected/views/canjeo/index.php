@@ -9,8 +9,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create Canjeo','url'=>array('create')),
-	array('label'=>'Manage Canjeo','url'=>array('admin')),
+	array('label'=>'Administrar Canjeos','url'=>array('admin')),
 );
 ?>
 

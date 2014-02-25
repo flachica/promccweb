@@ -10,11 +10,11 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Tienda', 'url'=>array('index')),
-	array('label'=>'Manage Tienda', 'url'=>array('admin')),
+	array('label'=>'Listar Tiendas', 'url'=>array('index')),
+	array('label'=>'Administrar Tiendas', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Tienda</h1>
+<h1>Crear Tienda</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

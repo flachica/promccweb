@@ -11,13 +11,13 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Centrocomercial', 'url'=>array('index')),
-	array('label'=>'Create Centrocomercial', 'url'=>array('create')),
-	array('label'=>'View Centrocomercial', 'url'=>array('view', 'id'=>$model->idcentrocomercial)),
-	array('label'=>'Manage Centrocomercial', 'url'=>array('admin')),
+	array('label'=>'Listar Centros comerciales', 'url'=>array('index')),
+	array('label'=>'Crear Centro comercial', 'url'=>array('create')),
+	array('label'=>'Ver Centro comercial', 'url'=>array('view', 'id'=>$model->idcentrocomercial)),
+	array('label'=>'Administrar Centros comerciales', 'url'=>array('admin')),
 );
 ?>
 
-    <h1>Update Centrocomercial <?php echo $model->idcentrocomercial; ?></h1>
+    <h1>Actualizar Centro comercial <?php echo $model->idcentrocomercial; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>
