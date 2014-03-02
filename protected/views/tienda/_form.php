@@ -33,7 +33,8 @@
 
             <?php echo $form->textFieldControlGroup($model,'longitud',array('span'=>5)); ?>
 
-            <?php echo $form->textFieldControlGroup($model,'activo',array('span'=>5,'maxlength'=>1)); ?>
+            <?php echo $form->labelEx($model,'activo'); ?>
+            <?php echo $form->checkBox($model,'activo',array('value'=>'Y', 'uncheckValue'=>'N')); ?>
 
         <div class="form-actions">
         <?php echo TbHtml::submitButton($model->isNewRecord ? 'Create' : 'Save',array(

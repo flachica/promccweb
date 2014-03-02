@@ -38,6 +38,7 @@ class Centrocomercial extends CActiveRecord
 		return array(
 			array('latitud, longitud', 'numerical', 'integerOnly'=>false),
 			array('nombre', 'length', 'max'=>45),
+			array('nombre', 'required'),
 			array('descripcion, foto, direccion, poblacion, provincia', 'length', 'max'=>4000),
 			array('activo', 'length', 'max'=>1),
 			// The following rule is used by search().

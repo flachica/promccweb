@@ -29,13 +29,26 @@
 
             <?php echo $form->textFieldControlGroup($model,'longitud',array('span'=>5)); ?>
 
+            <?php $this->widget('ext.coordinatepicker.CoordinatePicker', array(
+                    'model' => $model,
+                    'latitudeAttribute' => 'latitud',
+                    'longitudeAttribute' => 'longitud',
+                    //optional settings
+                    'editZoom' => 25,
+                    'pickZoom' => 25,
+                    'defaultLatitude' => 40.43794472516468,
+                    'defaultLongitude' => -3.6795366500000455,
+                    'label' => 'Picarlo de un mapa',
+                ));
+            ?>
             <?php echo $form->textFieldControlGroup($model,'direccion',array('span'=>5,'maxlength'=>4000)); ?>
 
             <?php echo $form->textFieldControlGroup($model,'poblacion',array('span'=>5,'maxlength'=>4000)); ?>
 
             <?php echo $form->textFieldControlGroup($model,'provincia',array('span'=>5,'maxlength'=>4000)); ?>
 
-            <?php echo $form->textFieldControlGroup($model,'activo',array('span'=>5,'maxlength'=>1)); ?>
+            <?php echo $form->labelEx($model,'activo'); ?>
+            <?php echo $form->checkBox($model,'activo',array('value'=>'Y', 'uncheckValue'=>'N')); ?>
 
         <div class="form-actions">
         <?php echo TbHtml::submitButton($model->isNewRecord ? 'Create' : 'Save',array(

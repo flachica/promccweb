@@ -34,6 +34,7 @@ class Particular extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('nombre, apellidos', 'length', 'max'=>100),
+			array('nombre', 'required'),
 			array('sexo', 'length', 'max'=>1),
 			array('usuario, password', 'length', 'max'=>45),
 			array('nacimiento', 'safe'),

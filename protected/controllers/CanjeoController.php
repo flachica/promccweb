@@ -93,7 +93,7 @@ class CanjeoController extends RController
 		if (isset($_POST['Canjeo'])) {
 			$model->attributes=$_POST['Canjeo'];
 			if ($model->save()) {
-				$this->redirect(array('view','id'=>$model->idcanjeo));
+				$this->redirect(array('admin','id'=>$model->idcanjeo));
 			}
 		}
 

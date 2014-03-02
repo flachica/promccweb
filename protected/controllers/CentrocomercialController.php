@@ -92,7 +92,7 @@ class CentrocomercialController extends RController
 		if (isset($_POST['Centrocomercial'])) {
 			$model->attributes=$_POST['Centrocomercial'];
 			if ($model->save()) {
-				$this->redirect(array('view','id'=>$model->idcentrocomercial));
+				$this->redirect(array('admin','id'=>$model->idcentrocomercial));
 			}
 		}
 

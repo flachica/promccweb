@@ -93,7 +93,7 @@ class ParticularController extends RController
 		if (isset($_POST['Particular'])) {
 			$model->attributes=$_POST['Particular'];
 			if ($model->save()) {
-				$this->redirect(array('view','id'=>$model->idparticular));
+				$this->redirect(array('admin','id'=>$model->idparticular));
 			}
 		}
 

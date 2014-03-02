@@ -93,7 +93,7 @@ class TiendaController extends RController
 		if (isset($_POST['Tienda'])) {
 			$model->attributes=$_POST['Tienda'];
 			if ($model->save()) {
-				$this->redirect(array('view','id'=>$model->idtienda));
+				$this->redirect(array('admin','id'=>$model->idtienda));
 			}
 		}
 
