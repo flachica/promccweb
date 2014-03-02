@@ -20,7 +20,7 @@ class Canjeo extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'promoshop.canjeo';
+		return 'canjeo';
 	}
 
 	/**

@@ -26,7 +26,7 @@ class Oferta extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'promoshop.oferta';
+		return 'oferta';
 	}
 
 	/**

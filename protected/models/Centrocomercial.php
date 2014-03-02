@@ -25,7 +25,7 @@ class Centrocomercial extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'promoshop.centrocomercial';
+		return 'centrocomercial';
 	}
 
 	/**

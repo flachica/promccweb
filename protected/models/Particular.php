@@ -22,7 +22,7 @@ class Particular extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'promoshop.particular';
+		return 'particular';
 	}
 
 	/**
