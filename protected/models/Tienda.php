@@ -98,6 +98,8 @@ class Tienda extends CActiveRecord
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
+      if (!isset($this->activo))
+         $this->activo = 'Y';
 
 		$criteria->compare('idtienda',$this->idtienda);
 		$criteria->compare('idcentrocomercial',$this->idcentrocomercial);

@@ -27,10 +27,11 @@
 
                     <?php echo $form->textFieldControlGroup($model,'longitud',array('span'=>5)); ?>
 
-                    <?php echo $form->textFieldControlGroup($model,'activo',array('span'=>5,'maxlength'=>1)); ?>
+                    <?php echo $form->labelEx($model,'activo'); ?>
+                    <?php echo $form->checkBox($model,'activo',array('value'=>'Y', 'uncheckValue'=>'N', 'checked'=>'checked')); ?>
 
         <div class="form-actions">
-        <?php echo TbHtml::submitButton('Search',  array('color' => TbHtml::BUTTON_COLOR_PRIMARY,));?>
+        <?php echo TbHtml::submitButton('Buscar',  array('color' => TbHtml::BUTTON_COLOR_PRIMARY,));?>
     </div>
 
     <?php $this->endWidget(); ?>
