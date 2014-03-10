@@ -1,0 +1,1 @@
+Appnima.User.logout();
