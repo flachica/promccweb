@@ -157,7 +157,7 @@ class AccountController extends Controller
 		$this->render('login',array('model'=>$model));
 	}
 
-	/**
+   /**
 	 * Logs out the current user and redirect to homepage.
 	 */
 	public function actionLogout()
@@ -346,7 +346,7 @@ class AccountController extends Controller
 				Yii::app()->mailer->sendMIME(
 					Yii::app()->name.' <'.Yii::app()->params['adminEmail'].'>',
 					$account->email,
-					'Reset of password at '.Yii::app()->name,
+					'Nueva contraseña para '.Yii::app()->name,
 					'',
 					$this->renderPartial('/verification/resetPassword', array(
 						'verification'=>$verification,

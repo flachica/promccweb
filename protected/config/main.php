@@ -61,10 +61,9 @@ return array(
           'debug'=>false, // Whether to enable debug mode. 
       ), 
 	),
-
-	// application components
+   // application components
 	'components'=>array(
-		'user'=>array(
+      'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
 			'loginUrl'=>array('/account/account/login'),
@@ -81,7 +80,7 @@ return array(
         'class'=>'ext.mail.Mailer',
          'backend'=>'mail',
          'mimeParams'=>array(
-            'text_encoding' => '7bit',
+           'text_encoding' => '7bit',
            'text_charset'  => 'UTF-8',
            'html_charset'  => 'UTF-8',
            'head_charset'  => 'UTF-8'
@@ -107,15 +106,7 @@ return array(
 			'charset' => 'utf8',
 		),
 
-      // production environment
-      /*'db'=>array(
-			'connectionString' => 'mysql:host=db475228301.db.1and1.com;dbname=db475228301',
-			'emulatePrepare' => true,
-			'username' => 'dbo475228301',
-			'password' => 'cambiala',
-			'charset' => 'utf8',
-		),*/
-		// uncomment the following to use a MySQL database
+      // uncomment the following to use a MySQL database
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
 			'errorAction'=>'site/error',

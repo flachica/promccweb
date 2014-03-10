@@ -6,6 +6,23 @@
 $this->breadcrumbs=array(
 	'Login',
 );
+
+$cs = Yii::app()->getClientScript();  
+
+$cs->registerScriptFile(
+   Yii::app()->baseUrl . '/appnima/js/hope.js',
+	CClientScript::POS_END
+	);
+
+$cs->registerScriptFile(
+   Yii::app()->baseUrl . '/appnima/js/appnima.js',
+	CClientScript::POS_END
+	);
+
+$cs->registerScriptFile(
+   Yii::app()->baseUrl . '/appnima/js/main.js',
+	CClientScript::POS_END
+	);
 ?>
 
 <h1>Login</h1>
@@ -18,6 +35,7 @@ $this->breadcrumbs=array(
 	'enableClientValidation'=>true,
 	'clientOptions'=>array(
 		'validateOnSubmit'=>true,
+      'beforeValidate'=>new CJavaScriptExpression("beforeLogin")
 	),
 )); ?>
 

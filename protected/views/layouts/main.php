@@ -7,6 +7,28 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<?php Yii::app()->bootstrap->register(); ?>
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/custom.css" />
+   <?php 
+      if (Yii::app()->user->isGuest) {
+         $cs = Yii::app()->getClientScript();  
+         $cs->registerScriptFile(
+         Yii::app()->baseUrl . '/appnima/js/hope.js',
+	      CClientScript::POS_END
+	      );
+         $cs->registerScriptFile(
+         Yii::app()->baseUrl . '/appnima/js/appnima.js',
+         CClientScript::POS_END
+         );
+         $cs->registerScriptFile(
+         Yii::app()->baseUrl . '/appnima/js/main.js',
+         CClientScript::POS_END
+         );
+         $cs->registerScriptFile(
+         Yii::app()->baseUrl . '/appnima/js/logout.js',
+	      CClientScript::POS_END
+	      );
+
+      }
+   ?>
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 

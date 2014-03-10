@@ -2,6 +2,22 @@
 /* @var $this CentrocomercialController */
 /* @var $model Centrocomercial */
 /* @var $form TbActiveForm */
+
+$cs = Yii::app()->getClientScript();  
+$cs->registerScriptFile(
+   Yii::app()->baseUrl . '/appnima/js/hope.js',
+	CClientScript::POS_END
+	);
+
+$cs->registerScriptFile(
+   Yii::app()->baseUrl . '/appnima/js/appnima.js',
+	CClientScript::POS_END
+	);
+
+$cs->registerScriptFile(
+   Yii::app()->baseUrl . '/appnima/js/main.js',
+	CClientScript::POS_END
+	);
 ?>
 
 <div class="form">
@@ -16,6 +32,12 @@
 )); ?>
 
     <p class="help-block">Los campos con <span class="required">*</span> son obligatorios.</p>
+
+<?php echo TbHtml::button('Probar',array(
+		    'color'=>TbHtml::BUTTON_COLOR_PRIMARY,
+		    'size'=>TbHtml::BUTTON_SIZE_LARGE,
+          'onclick'=>new CJavaScriptExpression("prueba()")
+		)); ?>
 
     <?php echo $form->errorSummary($model); ?>
 

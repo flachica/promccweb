@@ -39,7 +39,7 @@ class ApiController extends CController
     // {{{ actionIndex
     public function actionIndex()
     {
-        echo CJSON::encode(array("esto", "es", "una", "prueba"));
+        echo CJSON::encode(array("Webservice funcionando correctamente"));
     } // }}} 
     // {{{ actionList
     public function actionList()
@@ -263,8 +263,11 @@ class ApiController extends CController
      * @access private
      * @return void
      */
-    private function _sendResponse($status = 200, $body = '', $content_type = 'text/html')
+    private function _sendResponse($status = 200, $body = '', $content_type = 'text/json; charset=utf-8')
     {
+        //flachica: Permitir que de un explorador se pueda pedir datos no alojados en el mismo servidor donde está la página. Servicio externo.
+        header('Access-Control-Allow-Origin: *');
+
         $status_header = 'HTTP/1.1 ' . $status . ' ' . $this->_getStatusCodeMessage($status);
         // set the status
         header($status_header);
