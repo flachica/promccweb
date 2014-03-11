@@ -37,10 +37,13 @@ class Tienda extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('idcentrocomercial, idaccount, latitud, longitud', 'numerical', 'integerOnly'=>true),
+			array('idcentrocomercial, idaccount', 'numerical', 'integerOnly'=>true),
+			array('idcentrocomercial', 'required'),
 			array('latitud, longitud', 'numerical', 'integerOnly'=>false),
 			array('nombre', 'length', 'max'=>45),
 			array('nombre', 'required'),
+			array('latitud', 'required'),
+			array('longitud', 'required'),
 			array('descripcion, foto', 'length', 'max'=>4000),
 			array('activo', 'length', 'max'=>1),
 			// The following rule is used by search().

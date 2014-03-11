@@ -33,12 +33,6 @@ $cs->registerScriptFile(
 
     <p class="help-block">Los campos con <span class="required">*</span> son obligatorios.</p>
 
-<?php echo TbHtml::button('Probar',array(
-		    'color'=>TbHtml::BUTTON_COLOR_PRIMARY,
-		    'size'=>TbHtml::BUTTON_SIZE_LARGE,
-          'onclick'=>new CJavaScriptExpression("prueba()")
-		)); ?>
-
     <?php echo $form->errorSummary($model); ?>
 
             <?php echo $form->textFieldControlGroup($model,'nombre',array('span'=>5,'maxlength'=>45)); ?>
@@ -56,8 +50,8 @@ $cs->registerScriptFile(
                     'latitudeAttribute' => 'latitud',
                     'longitudeAttribute' => 'longitud',
                     //optional settings
-                    'editZoom' => 25,
-                    'pickZoom' => 25,
+                    'editZoom' => 15,
+                    'pickZoom' => 15,
                     'defaultLatitude' => 40.43794472516468,
                     'defaultLongitude' => -3.6795366500000455,
                     'label' => 'Picarlo de un mapa',

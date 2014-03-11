@@ -25,6 +25,57 @@ class ApiController extends CController
      */
     Const APPLICATION_ID = 'FLACHICA';
 
+    function orderMultiDimensionalArray ($toOrderArray, $field, $inverse = false) {
+        $position = array();
+        $newRow = array();
+        foreach ($toOrderArray as $key => $row) {
+                $position[$key]  = $row[$field];
+                $newRow[$key] = $row;
+        }
+        if ($inverse) {
+            arsort($position);
+        }
+        else {
+            asort($position);
+        }
+        $returnArray = array();
+        foreach ($position as $key => $pos) {     
+            $returnArray[] = $newRow[$key];
+        }
+        return $returnArray;
+    }
+
+    function distance($lat1, $lon1, $lat2, $lon2, $unit = 'K') {
+      if ($lat1 == '' || $lat2 == '')
+            return 0;
+
+      $theta = $lon1 - $lon2;
+      $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));
+      $dist = acos($dist);
+      $dist = rad2deg($dist);
+      $miles = $dist * 60 * 1.1515;
+      $unit = strtoupper($unit);
+
+      if ($unit == "K") {
+        return ($miles * 1.609344);
+      } else if ($unit == "N") {
+          return ($miles * 0.8684);
+        } else {
+            return $miles;
+          }
+    }
+
+    private function getParam($paramName) {
+        $value = '';        
+        if (array_key_exists ( $paramName , $_GET ))
+            $value = $_GET[$paramName];
+        
+        if (array_key_exists ( $paramName , $_POST ))
+            $value = $_POST[$paramName];
+
+        return $value;
+    }
+
     private $format = 'json';
     // }}} 
     // {{{ filters
@@ -46,7 +97,7 @@ class ApiController extends CController
     {
         $this->_checkAuth();
         
-        $model = CActiveRecord::model($_GET['model']);
+        $model = CActiveRecord::model($this->getParam('model'));
 
         if (!(array_key_exists ( 'pageidx' , $_GET ) || array_key_exists ( 'pageidx' , $_POST ))) {
             $models = $model->findAll();
@@ -55,11 +106,7 @@ class ApiController extends CController
             $count=$model->count($criteria);
             $pages=new CPagination($count);
             $size = Yii::app()->params['pageSizeJSON'];
-            $pageidx = 0;
-            if (array_key_exists ( 'pageidx' , $_GET ))
-                $pageidx = $_GET['pageidx'];
-            if (array_key_exists ( 'pageidx' , $_POST ))
-                $pageidx = $_POST['pageidx'];
+            $pageidx = $this->getParam('pageidx');
             
             // results per page
             $pages->pageSize=$size;
@@ -69,12 +116,22 @@ class ApiController extends CController
         }
 
         if(is_null($models)) {
-            $this->_sendResponse(200, sprintf('No items where found for model <b>%s</b>', $_GET['model']) );
+            $this->_sendResponse(200, sprintf('No items where found for model <b>%s</b>', $this->getParam('model')) );
         } else {
             $rows = array();
-            foreach($models as $model)
+            foreach($models as $model) {
                 $rows[] = $model->attributes;
-
+                $rows[count($rows)-1]['curLat'] = $this->getParam('curLat');
+                $rows[count($rows)-1]['curLon'] = $this->getParam('curLon');
+                $rows[count($rows)-1]['distancia'] = 
+                        $this->distance(
+                            $rows[count($rows)-1]['latitud'],
+                            $rows[count($rows)-1]['longitud'],
+                            $this->getParam('curLat'),
+                            $this->getParam('curLon')
+                        );
+            }
+            $rows = $this->orderMultiDimensionalArray($rows,"distancia",false);
             $this->_sendResponse(200, CJSON::encode($rows));
         }
     } // }}} 

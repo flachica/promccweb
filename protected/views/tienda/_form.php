@@ -19,7 +19,18 @@
 
     <?php echo $form->errorSummary($model); ?>
 
-            <?php echo $form->textFieldControlGroup($model,'idcentrocomercial',array('span'=>5)); ?>
+            <?php echo $form->labelEx($model,'idcentrocomercial'); ?>
+            <?php 
+                $cc_list = CHtml::listData(Centrocomercial::model()->findAll(), 'idcentrocomercial', 'nombre');
+                $options = array(
+                        'tabindex' => '0',
+                        'empty' => '(Vacío)',
+                );
+                echo $form->dropDownList($model,'idcentrocomercial', $cc_list, $options);
+                $form->error($model,'idcentrocomercial');
+            ?>
+            
+            <?php /*echo $form->textFieldControlGroup($model,'idcentrocomercial',array('span'=>5));*/ ?>
 
             <?php echo $form->textFieldControlGroup($model,'idaccount',array('span'=>5)); ?>
 
@@ -33,6 +44,19 @@
 
             <?php echo $form->textFieldControlGroup($model,'longitud',array('span'=>5)); ?>
 
+            <?php $this->widget('ext.coordinatepicker.CoordinatePicker', array(
+                    'model' => $model,
+                    'latitudeAttribute' => 'latitud',
+                    'longitudeAttribute' => 'longitud',
+                    //optional settings
+                    'editZoom' => 15,
+                    'pickZoom' => 15,
+                    'defaultLatitude' => 40.43794472516468,
+                    'defaultLongitude' => -3.6795366500000455,
+                    'label' => 'Picarlo de un mapa',
+                ));
+            ?>
+            
             <?php echo $form->labelEx($model,'activo'); ?>
             <?php echo $form->checkBox($model,'activo',array('value'=>'Y', 'uncheckValue'=>'N')); ?>
 

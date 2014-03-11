@@ -134,7 +134,7 @@ return array(
 		// this is used in contact page
 		'adminEmail'=>'fernando@desarrollo.wion.es',
       'alertEmail' => 'fernandolachica@gmail.com',
-      'modelJSONAvailables' => array('Centrocomercial'),
+      'modelJSONAvailables' => array('Centrocomercial','Tienda'),
       'pageSizeJSON' => 50,
 	),
 );
