@@ -99,10 +99,16 @@ class ApiController extends CController
         
         $model = CActiveRecord::model($this->getParam('model'));
 
+        $criteria = new CDbCriteria();
+        if ($this->getParam('model') == "Tienda"){
+            $ccID = $this->getParam('ccID');
+            if ($ccID != '')
+                $criteria->addCondition('idcentrocomercial = ' . $ccID);
+        }
+
         if (!(array_key_exists ( 'pageidx' , $_GET ) || array_key_exists ( 'pageidx' , $_POST ))) {
-            $models = $model->findAll();
+            $models = $model->findAll($criteria);
         } else {
-            $criteria=new CDbCriteria();
             $count=$model->count($criteria);
             $pages=new CPagination($count);
             $size = Yii::app()->params['pageSizeJSON'];

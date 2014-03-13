@@ -16,6 +16,7 @@ return array(
 	// path aliases
     'aliases' => array(
         'bootstrap' => realpath(__DIR__ . '/../extensions/bootstrap'),
+        'yiiwheels' => realpath(__DIR__ . '/../extensions/yiiwheels'),
     ),
 	// autoloading model and component classes
 	'import'=>array(
@@ -75,6 +76,10 @@ return array(
 		'bootstrap' => array(
             'class' => 'bootstrap.components.TbApi',   
       ),
+
+        'yiiwheels' => array(
+            'class' => 'yiiwheels.YiiWheels',   
+        ),
       
       'mailer'=>array(
         'class'=>'ext.mail.Mailer',
@@ -134,7 +139,7 @@ return array(
 		// this is used in contact page
 		'adminEmail'=>'fernando@desarrollo.wion.es',
       'alertEmail' => 'fernandolachica@gmail.com',
-      'modelJSONAvailables' => array('Centrocomercial','Tienda'),
+      'modelJSONAvailables' => array('Centrocomercial','Tienda', 'Oferta'),
       'pageSizeJSON' => 50,
 	),
 );

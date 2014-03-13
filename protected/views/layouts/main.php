@@ -8,8 +8,8 @@
 	<?php Yii::app()->bootstrap->register(); ?>
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/custom.css" />
    <?php 
+      $cs = Yii::app()->getClientScript();
       if (Yii::app()->user->isGuest) {
-         $cs = Yii::app()->getClientScript();  
          $cs->registerScriptFile(
          Yii::app()->baseUrl . '/appnima/js/hope.js',
 	      CClientScript::POS_END

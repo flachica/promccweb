@@ -19,21 +19,50 @@
 
     <?php echo $form->errorSummary($model); ?>
 
-            <?php echo $form->textFieldControlGroup($model,'idtienda',array('span'=>5)); ?>
+            <?php echo $form->labelEx($model,'idtienda'); ?>
+            <?php 
+                $tienda_list = CHtml::listData(Tienda::model()->findAll(), 'idtienda', 'nombre');
+                $options = array(
+                        'tabindex' => '0',
+                        'empty' => '(Vacío)',
+                );
+                echo $form->dropDownList($model,'idtienda', $tienda_list, $options);
+                $form->error($model,'idtienda');
+            ?>
 
             <?php echo $form->textFieldControlGroup($model,'nombre',array('span'=>5,'maxlength'=>45)); ?>
 
             <?php echo $form->textFieldControlGroup($model,'descripcion',array('span'=>5,'maxlength'=>4000)); ?>
 
+            <?php $this->widget(
+                'yiiwheels.widgets.datetimepicker.WhDateTimePicker',
+                array(
+                    'model' => $model,
+                    'attribute' => 'fechadesde',
+                    'htmlOptions' => array(
+                        'placeholder' => 'Comienzo'
+                    )
+                )
+            );
+            ?>
+
+            <?php $this->widget(
+                'yiiwheels.widgets.datetimepicker.WhDateTimePicker',
+                array(
+                    'model' => $model,
+                    'attribute' => 'fechahasta',
+                    'htmlOptions' => array(
+                        'placeholder' => 'Fin'
+                    )
+                )
+            );
+            ?>
+
             <?php echo $form->textFieldControlGroup($model,'foto',array('span'=>5,'maxlength'=>4000)); ?>
 
             <?php echo $form->textFieldControlGroup($model,'numcanjeos',array('span'=>5)); ?>
 
-            <?php echo $form->textFieldControlGroup($model,'fechadesde',array('span'=>5)); ?>
-
-            <?php echo $form->textFieldControlGroup($model,'fechahasta',array('span'=>5)); ?>
-
-            <?php echo $form->textFieldControlGroup($model,'precio',array('span'=>5)); ?>
+            <?php echo $form->numberFieldControlGroup($model,'precio',array('span'=>5, 'step'=>0.01, 'append' => ' EUR')); ?>
 
             <?php echo $form->textFieldControlGroup($model,'codigocanjeo',array('span'=>5,'maxlength'=>45)); ?>
 
