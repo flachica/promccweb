@@ -34,29 +34,34 @@
 
             <?php echo $form->textFieldControlGroup($model,'descripcion',array('span'=>5,'maxlength'=>4000)); ?>
 
-            <?php $this->widget(
-                'yiiwheels.widgets.datetimepicker.WhDateTimePicker',
-                array(
-                    'model' => $model,
-                    'attribute' => 'fechadesde',
-                    'htmlOptions' => array(
-                        'placeholder' => 'Comienzo'
-                    )
-                )
-            );
-            ?>
+            <div class="control-group">
+                <label class="control-label" for="Oferta_fechadesde">Indique rango de fechas</label>
+                <div class="controls form-actions">
+                        <?php $this->widget(
+                            'yiiwheels.widgets.datetimepicker.WhDateTimePicker',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'fechadesde',
+                                'htmlOptions' => array(
+                                    'placeholder' => 'Comienzo'
+                                )
+                            )
+                        );
+                        ?>
 
-            <?php $this->widget(
-                'yiiwheels.widgets.datetimepicker.WhDateTimePicker',
-                array(
-                    'model' => $model,
-                    'attribute' => 'fechahasta',
-                    'htmlOptions' => array(
-                        'placeholder' => 'Fin'
-                    )
-                )
-            );
-            ?>
+                        <?php $this->widget(
+                            'yiiwheels.widgets.datetimepicker.WhDateTimePicker',
+                            array(
+                                'model' => $model,
+                                'attribute' => 'fechahasta',
+                                'htmlOptions' => array(
+                                    'placeholder' => 'Fin'
+                                )
+                            )
+                        );
+                        ?>
+                </div>
+            </div>
 
             <?php echo $form->textFieldControlGroup($model,'foto',array('span'=>5,'maxlength'=>4000)); ?>
 

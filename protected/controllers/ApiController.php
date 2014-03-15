@@ -104,11 +104,13 @@ class ApiController extends CController
             $ccID = $this->getParam('ccID');
             if ($ccID != '')
                 $criteria->addCondition('idcentrocomercial = ' . $ccID);
+        } else if ($this->getParam('model') == "Oferta"){
+            $tdID = $this->getParam('tdID');
+            if ($tdID != '' && $tdID != '-1')
+                $criteria->addCondition('idtienda = ' . $tdID);
         }
 
-        if (!(array_key_exists ( 'pageidx' , $_GET ) || array_key_exists ( 'pageidx' , $_POST ))) {
-            $models = $model->findAll($criteria);
-        } else {
+        if (array_key_exists ( 'pageidx' , $_GET ) || array_key_exists ( 'pageidx' , $_POST )) {
             $count=$model->count($criteria);
             $pages=new CPagination($count);
             $size = Yii::app()->params['pageSizeJSON'];
@@ -118,8 +120,9 @@ class ApiController extends CController
             $pages->pageSize=$size;
             $pages->currentPage = $pageidx;
             $pages->applyLimit($criteria);
-            $models=$model->findAll($criteria);
         }
+
+        $models = $model->findAll($criteria);
 
         if(is_null($models)) {
             $this->_sendResponse(200, sprintf('No items where found for model <b>%s</b>', $this->getParam('model')) );
@@ -129,15 +132,20 @@ class ApiController extends CController
                 $rows[] = $model->attributes;
                 $rows[count($rows)-1]['curLat'] = $this->getParam('curLat');
                 $rows[count($rows)-1]['curLon'] = $this->getParam('curLon');
-                $rows[count($rows)-1]['distancia'] = 
-                        $this->distance(
-                            $rows[count($rows)-1]['latitud'],
-                            $rows[count($rows)-1]['longitud'],
-                            $this->getParam('curLat'),
-                            $this->getParam('curLon')
-                        );
+                if (($this->getParam('model') == "Centrocomercial") || ($this->getParam('model') == "Tienda")){
+                    $rows[count($rows)-1]['distancia'] = 
+                            $this->distance(
+                                $rows[count($rows)-1]['latitud'],
+                                $rows[count($rows)-1]['longitud'],
+                                $this->getParam('curLat'),
+                                $this->getParam('curLon')
+                            );
+                }
             }
-            $rows = $this->orderMultiDimensionalArray($rows,"distancia",false);
+            if (($this->getParam('model') == "Centrocomercial") || ($this->getParam('model') == "Tienda"))
+                 $rows = $this->orderMultiDimensionalArray($rows,"distancia",false);
+            if (($this->getParam('model') == "Oferta"))
+                 $rows = $this->orderMultiDimensionalArray($rows,"idtienda",false);
             $this->_sendResponse(200, CJSON::encode($rows));
         }
     } // }}} 
