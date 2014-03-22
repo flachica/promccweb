@@ -78,7 +78,7 @@ return array(
       ),
 
         'yiiwheels' => array(
-            'class' => 'yiiwheels.YiiWheels',   
+            'class' => 'yiiwheels.YiiWheels',
         ),
       
       'mailer'=>array(

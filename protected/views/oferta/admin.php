@@ -35,7 +35,7 @@ $('.search-form form').submit(function(){
 or <b>=</b>) al principio de cada valor de búsqueda.
 </p>
 
-<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button btn')); ?>
+<?php echo CHtml::link('Búsqueda avanzada','#',array('class'=>'search-button btn')); ?>
 <div class="search-form" style="display:none">
 <?php $this->renderPartial('_search',array(
 	'model'=>$model,
@@ -48,11 +48,11 @@ or <b>=</b>) al principio de cada valor de búsqueda.
 	'filter'=>$model,
 	'columns'=>array(
 		'idoferta',
-		'idtienda',
 		'nombre',
 		'descripcion',
-		'foto',
-		'numcanjeos',
+        'fechadesde',
+        'fechahasta',		
+        'numcanjeos',
 		/*
 		'fechadesde',
 		'fechahasta',

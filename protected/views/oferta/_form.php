@@ -41,10 +41,16 @@
                             'yiiwheels.widgets.datetimepicker.WhDateTimePicker',
                             array(
                                 'model' => $model,
+                                
                                 'attribute' => 'fechadesde',
                                 'htmlOptions' => array(
-                                    'placeholder' => 'Comienzo'
-                                )
+                                    'placeholder' => 'Comienzo',
+                                    
+                                ),
+                                'pluginOptions' => array(
+                                                        'language' => 'es',
+                                                        'weekStart' => 1,
+                                                    ),
                             )
                         );
                         ?>
@@ -55,8 +61,14 @@
                                 'model' => $model,
                                 'attribute' => 'fechahasta',
                                 'htmlOptions' => array(
-                                    'placeholder' => 'Fin'
-                                )
+                                    'placeholder' => 'Fin',
+                                    'language' => 'es-ES',
+                                ),
+                                'pluginOptions' => array(
+                                                        'language' => 'es',
+                                                        'weekStart' => 1,
+                                                    ),
+                                
                             )
                         );
                         ?>

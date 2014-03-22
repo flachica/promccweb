@@ -108,6 +108,9 @@ class ApiController extends CController
             $tdID = $this->getParam('tdID');
             if ($tdID != '' && $tdID != '-1')
                 $criteria->addCondition('idtienda = ' . $tdID);
+            $ofertaID = $this->getParam('ofertaID');
+            if ($ofertaID != '')
+                $criteria->addCondition('idoferta = ' . $ofertaID);
         }
 
         if (array_key_exists ( 'pageidx' , $_GET ) || array_key_exists ( 'pageidx' , $_POST )) {
