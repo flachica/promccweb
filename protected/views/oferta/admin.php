@@ -47,9 +47,8 @@ or <b>=</b>) al principio de cada valor de búsqueda.
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'idoferta',
 		'nombre',
-		'descripcion',
+		'precio',
         'fechadesde',
         'fechahasta',		
         'numcanjeos',

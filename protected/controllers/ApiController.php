@@ -143,6 +143,10 @@ class ApiController extends CController
                                 $this->getParam('curLat'),
                                 $this->getParam('curLon')
                             );
+                }else if ($this->getParam('model') == "Oferta") {
+                    $date = DateTime::createFromFormat("d/m/Y H:i:s", $rows[count($rows)-1]['fechahasta']);
+                    $diff = $date->getTimestamp() - DateTime::createFromFormat("d/m/Y H:i:s",date("d/m/Y H:i:s"))->getTimestamp();
+                    $rows[count($rows)-1]['segundosRestantes'] = $diff;
                 }
             }
             if (($this->getParam('model') == "Centrocomercial") || ($this->getParam('model') == "Tienda"))
