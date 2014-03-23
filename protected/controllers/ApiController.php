@@ -25,6 +25,25 @@ class ApiController extends CController
      */
     Const APPLICATION_ID = 'FLACHICA';
 
+    public function actionCanjear(){
+        $result = array("mensaje"=>"KO");
+        $ofertaID = $this->getParam("ofertaID");
+        if ($ofertaID){
+            $model = Oferta::model()->findByPk($ofertaID);
+            if (isset($model->attributes['numcanjeos'])){           
+                if($model->attributes['numcanjeos']>0){
+                    $model->numcanjeos -= 1;
+                    $model->save();
+                }
+            }else{
+                $canjeo = new Canjeo;
+            }
+                echo "C: " . $model->attributes['numcanjeos'];   
+            $result = array("mensaje"=>"OK");
+        }
+        $this->_sendResponse(200, CJSON::encode($result));
+    }
+
     function orderMultiDimensionalArray ($toOrderArray, $field, $inverse = false) {
         $position = array();
         $newRow = array();
