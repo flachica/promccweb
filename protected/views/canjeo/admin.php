@@ -48,8 +48,9 @@ or <b>=</b>) al principio de cada valor de búsqueda.
 	'columns'=>array(
 		'idcanjeo',
 		'idoferta',
-		'idparticular',
+		'email',
 		'fecha',
+        'codigo',
 		array(
 			'class'=>'bootstrap.widgets.TbButtonColumn',
 		),

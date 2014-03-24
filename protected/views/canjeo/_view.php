@@ -13,8 +13,12 @@
 	<?php echo CHtml::encode($data->idoferta); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('idparticular')); ?>:</b>
-	<?php echo CHtml::encode($data->idparticular); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('email')); ?>:</b>
+	<?php echo CHtml::encode($data->email); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('codigo')); ?>:</b>
+	<?php echo CHtml::encode($data->codigo); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('fecha')); ?>:</b>

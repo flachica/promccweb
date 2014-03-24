@@ -28,7 +28,8 @@ $this->menu=array(
     'attributes'=>array(
 		'idcanjeo',
 		'idoferta',
-		'idparticular',
+		'email',
+		'codigo',
 		'fecha',
 	),
 )); ?>

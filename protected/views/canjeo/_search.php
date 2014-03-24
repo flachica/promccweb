@@ -15,7 +15,9 @@
 
                     <?php echo $form->textFieldControlGroup($model,'idoferta',array('span'=>5)); ?>
 
-                    <?php echo $form->textFieldControlGroup($model,'idparticular',array('span'=>5)); ?>
+                    <?php echo $form->textFieldControlGroup($model,'email',array('span'=>5)); ?>
+
+                    <?php echo $form->textFieldControlGroup($model,'codigo',array('span'=>5)); ?>
 
                     <?php echo $form->textFieldControlGroup($model,'fecha',array('span'=>5)); ?>
 

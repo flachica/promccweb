@@ -17,6 +17,9 @@
  * @see http://www.gen-x-design.com/archives/making-restful-requests-in-php/
  * @license (tbd)
  */
+
+Yii::import('ext.barcodegenerator.*');
+
 class ApiController extends CController
 {
     // {{{ *** Members ***
@@ -26,22 +29,60 @@ class ApiController extends CController
     Const APPLICATION_ID = 'FLACHICA';
 
     public function actionCanjear(){
-        $result = array("mensaje"=>"KO");
+        $result = array("status"=>"KO");
         $ofertaID = $this->getParam("ofertaID");
-        if ($ofertaID){
+        $email = $this->getParam("email");
+        $codigobarras = 0;
+        if (   (strlen($ofertaID)>0) && 
+               (strlen($email)>0)
+           ){
             $model = Oferta::model()->findByPk($ofertaID);
             if (isset($model->attributes['numcanjeos'])){           
                 if($model->attributes['numcanjeos']>0){
                     $model->numcanjeos -= 1;
                     $model->save();
+                    $codigobarras = $this->guardaCanjeo();
+                }else{
+                    $result['status'] = 'KO';
+                    $result['message'] = 'Número de canjeos superado';
+                    $this->_sendResponse(200, CJSON::encode($result));
                 }
             }else{
-                $canjeo = new Canjeo;
+                $codigobarras = $this->guardaCanjeo(); 
             }
-                echo "C: " . $model->attributes['numcanjeos'];   
-            $result = array("mensaje"=>"OK");
+            $result = array("status"=>"OK");
+        } else {
+            $result['status'] = 'KO';
+            $result['message'] = 'Revise si ha enviado los parámetros ofertaID y email';
+            $this->_sendResponse(200, CJSON::encode($result));
         }
-        $this->_sendResponse(200, CJSON::encode($result));
+        
+        $bc = new BarcodeGeneratorEAN13;
+		$bc->init();
+		$bc->build($codigobarras,'json');
+    }
+
+    public function guardaCanjeo() {
+        $ofertaID = $this->getParam("ofertaID");
+        $canjeo = new Canjeo;
+        $canjeo->idoferta = $ofertaID;
+        $canjeo->email = $this->getParam('email');
+
+        $date = new DateTime();
+        $canjeo->fecha = $date->format('d/m/Y H:i:s');
+        
+        $row = Yii::app()->db
+                      ->createCommand("SELECT max(substring(codigo,1,12)) as maxcodigo FROM canjeo")
+                      ->queryRow();
+        $maxCodigo = 0;
+        if (array_key_exists('maxcodigo',$row))
+            $maxCodigo = $row['maxcodigo'];
+        if(!isset($maxCodigo))
+            $maxCodigo = 0;
+
+        $canjeo->codigo = BarcodeGeneratorEAN13::generateEAN($maxCodigo + 1);
+        $canjeo->save();
+        return $canjeo->codigo;
     }
 
     function orderMultiDimensionalArray ($toOrderArray, $field, $inverse = false) {
@@ -351,6 +392,7 @@ class ApiController extends CController
     // }}} End Actions
     // {{{ Other Methods
     // {{{ _sendResponse
+    
     /**
      * Sends the API response 
      * 

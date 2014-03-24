@@ -1,17 +1,17 @@
 <?php
 
 /**
- * This is the model class for table "promoshop.canjeo".
+ * This is the model class for table "canjeo".
  *
- * The followings are the available columns in table 'promoshop.canjeo':
+ * The followings are the available columns in table 'canjeo':
  * @property integer $idcanjeo
  * @property integer $idoferta
- * @property integer $idparticular
  * @property string $fecha
+ * @property string $email
+ * @property string $codigo
  *
  * The followings are the available model relations:
  * @property Oferta $idoferta0
- * @property Particular $idparticular0
  */
 class Canjeo extends CActiveRecord
 {
@@ -31,11 +31,12 @@ class Canjeo extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('idoferta, idparticular', 'numerical', 'integerOnly'=>true),
-			array('fecha', 'safe'),
+			array('idoferta', 'numerical', 'integerOnly'=>true),
+			array('fecha', 'length', 'max'=>45),
+			array('email, codigo', 'length', 'max'=>4000),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('idcanjeo, idoferta, idparticular, fecha', 'safe', 'on'=>'search'),
+			array('idcanjeo, idoferta, fecha, email, codigo', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -48,7 +49,6 @@ class Canjeo extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'idoferta0' => array(self::BELONGS_TO, 'Oferta', 'idoferta'),
-			'idparticular0' => array(self::BELONGS_TO, 'Particular', 'idparticular'),
 		);
 	}
 
@@ -60,8 +60,9 @@ class Canjeo extends CActiveRecord
 		return array(
 			'idcanjeo' => 'Idcanjeo',
 			'idoferta' => 'Idoferta',
-			'idparticular' => 'Idparticular',
 			'fecha' => 'Fecha',
+			'email' => 'Email',
+			'codigo' => 'Codigo',
 		);
 	}
 
@@ -85,8 +86,9 @@ class Canjeo extends CActiveRecord
 
 		$criteria->compare('idcanjeo',$this->idcanjeo);
 		$criteria->compare('idoferta',$this->idoferta);
-		$criteria->compare('idparticular',$this->idparticular);
 		$criteria->compare('fecha',$this->fecha,true);
+		$criteria->compare('email',$this->email,true);
+		$criteria->compare('codigo',$this->codigo,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
