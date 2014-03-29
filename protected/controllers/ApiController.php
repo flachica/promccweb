@@ -164,6 +164,12 @@ class ApiController extends CController
             $ccID = $this->getParam('ccID');
             if ($ccID != '')
                 $criteria->addCondition('idcentrocomercial = ' . $ccID);
+            //flachica: Que tenga ofertas
+            $criteria->addCondition("idtienda in (select idtienda
+                                                    FROM oferta
+                                                    where ((coalesce(numcanjeos,1) > 0 ) AND 
+                                                    (str_to_date(fechadesde, '%d/%m/%Y %H:%i:%s') <= now())) AND 
+                                                    (str_to_date(fechahasta, '%d/%m/%Y %H:%i:%s') >= now()))");
         } else if ($this->getParam('model') == "Oferta"){
             $tdID = $this->getParam('tdID');
             if ($tdID != '' && $tdID != '-1')
@@ -175,6 +181,15 @@ class ApiController extends CController
             $criteria->addCondition('coalesce(numcanjeos,1) > 0 ' . $ofertaID);
             $criteria->addCondition("str_to_date(fechadesde, '%d/%m/%Y %H:%i:%s') <= now()");
             $criteria->addCondition("str_to_date(fechahasta, '%d/%m/%Y %H:%i:%s') >= now()");
+        } else if ($this->getParam('model') == "Centrocomercial") {
+             $criteria->addCondition("idcentrocomercial in (select idcentrocomercial
+                                    from tienda
+                                    where idtienda in (
+                                                    select idtienda
+                                                    FROM oferta
+                                                    where ((coalesce(numcanjeos,1) > 0 ) AND 
+                                                    (str_to_date(fechadesde, '%d/%m/%Y %H:%i:%s') <= now())) AND 
+                                                    (str_to_date(fechahasta, '%d/%m/%Y %H:%i:%s') >= now())))");
         }
 
         if (array_key_exists ( 'pageidx' , $_GET ) || array_key_exists ( 'pageidx' , $_POST )) {
