@@ -52,8 +52,8 @@
 								    array('label' => 'Inicio', 'url' => array('/site/index')),
 									 array('label' => 'Roles Usuario', 'url' => array('/rights/assignment/view'),'visible'=>$isSuperUser),
                            array('label' => 'Maestros', 'items' => array(
+                                array('label' => 'Tienda usuarios', 'url' => array('/accountmod/admin'),'visible'=>$isSuperUser),
                                 array('label' => 'Ofertas', 'url' => array('/oferta/admin')),
-                                array('label' => 'Clientes', 'url' => array('/particular/admin')),
                                 array('label' => 'Canjeos', 'url' => array('/canjeo/admin')),
                                 TbHtml::menuDivider($hiddenIfNotSuperUser),
                                 array('label' => 'Centros comerciales', 'url' => array('/centrocomercial/admin'),'visible'=>$isSuperUser),
