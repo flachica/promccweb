@@ -2,7 +2,6 @@
 /* @var $this CanjeoController */
 /* @var $model Canjeo */
 
-
 $this->breadcrumbs=array(
 	'Canjeos'=>array('index'),
 	'Manage',
@@ -41,16 +40,17 @@ or <b>=</b>) al principio de cada valor de búsqueda.
 )); ?>
 </div><!-- search-form -->
 
-<?php $this->widget('bootstrap.widgets.TbGridView',array(
+<?php 
+$this->widget('bootstrap.widgets.TbGridView',array(
 	'id'=>'canjeo-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
 		'idcanjeo',
-		'idoferta',
 		'email',
 		'fecha',
         'codigo',
+		'canjeado',
 		array(
 			'class'=>'bootstrap.widgets.TbButtonColumn',
 		),

@@ -178,7 +178,7 @@ class ApiController extends CController
             if ($ofertaID != '')
                 $criteria->addCondition('idoferta = ' . $ofertaID);
             
-            $criteria->addCondition('coalesce(numcanjeos,1) > 0 ' . $ofertaID);
+            $criteria->addCondition('coalesce(numcanjeos,1) > 0 ');
             $criteria->addCondition("str_to_date(fechadesde, '%d/%m/%Y %H:%i:%s') <= now()");
             $criteria->addCondition("str_to_date(fechahasta, '%d/%m/%Y %H:%i:%s') >= now()");
         } else if ($this->getParam('model') == "Centrocomercial") {

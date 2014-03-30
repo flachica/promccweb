@@ -18,8 +18,9 @@
     <p class="help-block">Los campos con <span class="required">*</span> son obligatorios.</p>
 
     <?php echo $form->errorSummary($model); ?>
-
-            <?php echo $form->textFieldControlGroup($model,'idoferta',array('span'=>5)); ?>
+            <div class="form-actions">
+                <?php echo $form->checkBoxControlGroup($model,'canjeado',array('span'=>5)); ?>
+            </div>
 
             <?php echo $form->textFieldControlGroup($model,'email',array('span'=>5)); ?>
 

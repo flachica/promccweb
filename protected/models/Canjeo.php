@@ -9,6 +9,7 @@
  * @property string $fecha
  * @property string $email
  * @property string $codigo
+ * @property string $canjeado
  *
  * The followings are the available model relations:
  * @property Oferta $idoferta0
@@ -34,9 +35,10 @@ class Canjeo extends CActiveRecord
 			array('idoferta', 'numerical', 'integerOnly'=>true),
 			array('fecha', 'length', 'max'=>45),
 			array('email, codigo', 'length', 'max'=>4000),
+			array('canjeado', 'length', 'max'=>1),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('idcanjeo, idoferta, fecha, email, codigo', 'safe', 'on'=>'search'),
+			array('idcanjeo, idoferta, fecha, email, codigo, canjeado', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,6 +65,7 @@ class Canjeo extends CActiveRecord
 			'fecha' => 'Fecha',
 			'email' => 'Email',
 			'codigo' => 'Codigo',
+			'canjeado' => 'Canjeado',
 		);
 	}
 
@@ -81,14 +84,16 @@ class Canjeo extends CActiveRecord
 	public function search()
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
-
 		$criteria=new CDbCriteria;
-
-		$criteria->compare('idcanjeo',$this->idcanjeo);
+        $criteria->compare('idcanjeo',$this->idcanjeo);
 		$criteria->compare('idoferta',$this->idoferta);
 		$criteria->compare('fecha',$this->fecha,true);
 		$criteria->compare('email',$this->email,true);
 		$criteria->compare('codigo',$this->codigo,true);
+        if (!isset($this->canjeado))
+            $this->canjeado = 0;
+
+		$criteria->compare('canjeado',$this->canjeado);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

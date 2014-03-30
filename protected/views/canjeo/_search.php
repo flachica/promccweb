@@ -13,6 +13,8 @@
 
                     <?php echo $form->textFieldControlGroup($model,'idcanjeo',array('span'=>5)); ?>
 
+                    <?php echo $form->checkBoxControlGroup($model,'canjeado',array('span'=>5)); ?>
+
                     <?php echo $form->textFieldControlGroup($model,'idoferta',array('span'=>5)); ?>
 
                     <?php echo $form->textFieldControlGroup($model,'email',array('span'=>5)); ?>
