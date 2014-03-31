@@ -69,7 +69,7 @@ class OfertaController extends RController
 		if (isset($_POST['Oferta'])) {
 			$model->attributes=$_POST['Oferta'];
 			if ($model->save()) {
-				$this->redirect(array('view','id'=>$model->idoferta));
+				$this->redirect(array('admin','id'=>$model->idoferta));
 			}
 		}
 
