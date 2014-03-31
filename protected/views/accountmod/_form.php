@@ -15,7 +15,7 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note">Los campos con <span class="required">*</span> son obligatorios.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
@@ -25,16 +25,20 @@
 		<?php echo $form->error($model,'email'); ?>
 	</div>
 
-	<?php echo $form->labelEx($model,'idtienda'); ?>
     <?php 
         $tienda_list = CHtml::listData(Tienda::model()->findAll(), 'idtienda', 'nombre');
         $options = array(
                 'tabindex' => '0',
                 'empty' => '(Vacío)',
         );
-        echo $form->dropDownList($model,'idtienda', $tienda_list, $options);
+    ?>
+	<div class="row">
+    <?php
+	echo $form->labelEx($model,'idtienda');
+	echo $form->dropDownList($model,'idtienda', $tienda_list, $options);
         $form->error($model,'idtienda');
     ?>
+	</div>
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>

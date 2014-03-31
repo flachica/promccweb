@@ -42,17 +42,17 @@ or <b>=</b>) al principio de cada valor de búsqueda.
 
 <?php 
 $this->widget('bootstrap.widgets.TbGridView',array(
-	'id'=>'canjeo-grid',
-	'dataProvider'=>$model->search(),
-	'filter'=>$model,
-	'columns'=>array(
-		'idcanjeo',
-		'email',
-		'fecha',
-        'codigo',
-		'canjeado',
-		array(
-			'class'=>'bootstrap.widgets.TbButtonColumn',
-		),
-	),
+	                                                         'id'=>'canjeo-grid',
+	                                                         'dataProvider'=>$model->search(),
+	                                                         'filter'=>$model,
+                                                            'columns'=>array(
+		                                                         'idcanjeo',
+		                                                         'email',
+		                                                         'fecha',
+                                                                 'codigo',
+		                                                         'canjeado',
+		                                                         array(
+			                                                         'class'=>'bootstrap.widgets.TbButtonColumn',
+		                                                         ),
+	                                                         ),
 )); ?>

@@ -109,6 +109,32 @@ class Oferta extends CActiveRecord
 		$criteria->compare('precio',$this->precio);
 		$criteria->compare('codigocanjeo',$this->codigocanjeo,true);
 
+      //flachica: Miro el rol para ver si es tienda y solo mostrar la info autorizada
+		$rolRow = Yii::app()->db
+                      ->createCommand(" SELECT itemname 
+					FROM AuthAssignment
+					where (itemname = 'Tienda' or itemname = 'Administrador') and
+					      userid = " . Yii::app()->user->id)
+                      ->queryRow();
+		$idTienda = -1;
+		if (count($rolRow)>0) {
+			if ($rolRow['itemname'] == 'Tienda') {
+				$idTiendaRow = Yii::app()->db
+				      ->createCommand(" SELECT idtienda 
+							FROM account
+							where id = " . Yii::app()->user->id)
+				      ->queryRow();
+				if (count($idTiendaRow)>0) {
+					$idTienda = $idTiendaRow['idtienda'];
+					$criteria->addCondition('idtienda = ' . $idTienda);	
+				}
+			} else if ($rolRow['itemname'] != 'Administrador') {
+				$criteria->addCondition('id = -1');
+			}
+		}
+      //fin flachica
+
+
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));

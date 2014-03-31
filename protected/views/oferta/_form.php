@@ -20,12 +20,36 @@
     <?php echo $form->errorSummary($model); ?>
 
             <?php echo $form->labelEx($model,'idtienda'); ?>
-            <?php 
-                $tienda_list = CHtml::listData(Tienda::model()->findAll(), 'idtienda', 'nombre');
-                $options = array(
-                        'tabindex' => '0',
-                        'empty' => '(Vacío)',
-                );
+            <?php
+
+      //flachica: Miro el rol para ver si es tienda y solo mostrar la info autorizada
+		$criteria = new CDbCriteria();
+		$rolRow = Yii::app()->db
+                      ->createCommand(" SELECT itemname 
+					FROM AuthAssignment
+					where (itemname = 'Tienda' or itemname = 'Administrador') and
+					      userid = " . Yii::app()->user->id)
+                      ->queryRow();
+		$idTienda = -1;
+		if (count($rolRow)>0) {
+			if ($rolRow['itemname'] == 'Tienda') {
+				$idTiendaRow = Yii::app()->db
+				      ->createCommand(" SELECT idtienda 
+							FROM account
+							where id = " . Yii::app()->user->id)
+				      ->queryRow();
+				if (count($idTiendaRow)>0) {
+					$idTienda = $idTiendaRow['idtienda'];
+					$criteria->addCondition('idtienda = ' . $idTienda);	
+				}
+			} else if ($rolRow['itemname'] != 'Administrador') {
+				$criteria->addCondition('id = -1');
+			}
+		}
+      //fin flachica
+
+		$tienda_list = CHtml::listData(Tienda::model()->findAll($criteria), 'idtienda', 'nombre');
+                $options = array();
                 echo $form->dropDownList($model,'idtienda', $tienda_list, $options);
                 $form->error($model,'idtienda');
             ?>
