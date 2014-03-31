@@ -33,7 +33,15 @@ class ApiController extends CController
         $ofertaID = $this->getParam("ofertaID");
         $email = $this->getParam("email");
         $codigobarras = 0;
-        if (   (strlen($ofertaID)>0) && 
+
+        $row = Yii::app()->db
+                      ->createCommand("SELECT idcanjeo FROM canjeo where idoferta = $ofertaID and email = '$email'")
+                      ->queryRow();
+        if (is_array($row) && array_key_exists('idcanjeo',$row)) {
+            $result['status'] = 'KO';
+            $result['message'] = 'Usted ya ha canjeado esta oferta';
+            $this->_sendResponse(200, CJSON::encode($result));
+        } else if (   (strlen($ofertaID)>0) && 
                (strlen($email)>0)
            ){
             $model = Oferta::model()->findByPk($ofertaID);
@@ -212,6 +220,7 @@ class ApiController extends CController
             $rows = array();
             foreach($models as $model) {
                 $rows[] = $model->attributes;
+
                 $rows[count($rows)-1]['curLat'] = $this->getParam('curLat');
                 $rows[count($rows)-1]['curLon'] = $this->getParam('curLon');
                 if (($this->getParam('model') == "Centrocomercial") || ($this->getParam('model') == "Tienda")){
