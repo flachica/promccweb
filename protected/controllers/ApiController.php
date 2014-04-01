@@ -170,7 +170,7 @@ class ApiController extends CController
         $criteria = new CDbCriteria();
         if ($this->getParam('model') == "Tienda"){
             $ccID = $this->getParam('ccID');
-            if ($ccID != '')
+            if ($ccID != '' && $ccID != '-1')
                 $criteria->addCondition('idcentrocomercial = ' . $ccID);
             //flachica: Que tenga ofertas
             $criteria->addCondition("idtienda in (select idtienda
@@ -179,6 +179,9 @@ class ApiController extends CController
                                                     (str_to_date(fechadesde, '%d/%m/%Y %H:%i:%s') <= now())) AND 
                                                     (str_to_date(fechahasta, '%d/%m/%Y %H:%i:%s') >= now()))");
         } else if ($this->getParam('model') == "Oferta"){
+            $ccID = $this->getParam('ccID');
+            if ($ccID != '' && $ccID != '-1')
+                $criteria->addCondition('idtienda in (select idtienda from tienda where idcentrocomercial = ' . $ccID . ')');
             $tdID = $this->getParam('tdID');
             if ($tdID != '' && $tdID != '-1')
                 $criteria->addCondition('idtienda = ' . $tdID);
@@ -186,6 +189,7 @@ class ApiController extends CController
             if ($ofertaID != '')
                 $criteria->addCondition('idoferta = ' . $ofertaID);
             
+            $criteria->addCondition('(upper(descripcion) like "%' . $this->getParam('txtBusqueda') . '%") or (upper(nombre) like "%' . $this->getParam('txtBusqueda') . '%")');
             $criteria->addCondition('coalesce(numcanjeos,1) > 0 ');
             $criteria->addCondition("str_to_date(fechadesde, '%d/%m/%Y %H:%i:%s') <= now()");
             $criteria->addCondition("str_to_date(fechahasta, '%d/%m/%Y %H:%i:%s') >= now()");
