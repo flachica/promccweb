@@ -63,12 +63,16 @@ class OfertaController extends RController
 	{
 		$model=new Oferta;
 
-		// Uncomment the following line if AJAX validation is needed
+        // Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if (isset($_POST['Oferta'])) {
 			$model->attributes=$_POST['Oferta'];
-			if ($model->save()) {
+			$uploadedFile=CUploadedFile::getInstance($model,'foto');
+            $fileName = "{$uploadedFile}";  // nombre de archivo
+            $model->foto = $fileName;
+            if ($model->save()) {
+                $uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$fileName);
 				$this->redirect(array('admin','id'=>$model->idoferta));
 			}
 		}
@@ -84,16 +88,22 @@ class OfertaController extends RController
 	 * @param integer $id the ID of the model to be updated
 	 */
 	public function actionUpdate($id)
-	{
-		$model=$this->loadModel($id);
+	{   
+        $model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if (isset($_POST['Oferta'])) {
 			$model->attributes=$_POST['Oferta'];
+            $model->foto = $_FILES['Oferta']['name']['foto'];
+            $uploadedFile=CUploadedFile::getInstance($model,'foto');
 			if ($model->save()) {
-				$this->redirect(array('admin','id'=>$model->idoferta));
+                if(!empty($uploadedFile))  // checkeamos si el archivo subido esta seteado o no
+                {
+                    $uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$model->foto);
+                }
+                $this->redirect(array('admin','id'=>$model->idoferta));
 			}
 		}
 

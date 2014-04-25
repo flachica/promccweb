@@ -13,6 +13,9 @@
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>false,
+    'htmlOptions' => array(
+        'enctype' => 'multipart/form-data',
+    ),
 )); ?>
 
     <p class="help-block">Los campos con <span class="required">*</span> son obligatorios.</p>
@@ -99,7 +102,23 @@
                 </div>
             </div>
 
-            <?php echo $form->textFieldControlGroup($model,'foto',array('span'=>5,'maxlength'=>4000)); ?>
+            <?php //echo $form->textFieldControlGroup($model,'foto',array('span'=>5,'maxlength'=>4000)); ?>
+            <?php echo $form->fileFieldControlGroup($model, 'foto'); ?>
+
+            <!-- <div class="control-group">
+                    <?php //echo $form->labelEx($model,'foto'); ?>
+                    <?php //echo CHtml::activeFileField($model, 'foto'); ?>
+                    <?php //echo $form->error($model,'foto'); ?>
+            </div>-->
+
+            
+
+            <?php if($model->isNewRecord!='1'){ ?>
+                <div class="control-group">
+                     <?php if (strlen($model->foto)>0)
+                            echo CHtml::image(Yii::app()->request->baseUrl.'/images/'.$model->foto,"foto",array("width"=>200)); ?>
+                </div>
+            <?php } ?>
 
             <?php echo $form->textFieldControlGroup($model,'numcanjeos',array('span'=>5)); ?>
 

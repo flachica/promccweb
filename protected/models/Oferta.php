@@ -40,11 +40,13 @@ class Oferta extends CActiveRecord
 			array('idtienda, numcanjeos', 'numerical', 'integerOnly'=>true),
 			array('precio', 'numerical'),
 			array('nombre, codigocanjeo', 'length', 'max'=>45),
-			array('descripcion, foto', 'length', 'max'=>4000),
+			array('descripcion', 'length', 'max'=>4000),
+            array('foto', 'file', 'types'=>'jpg, gif, png'),
 			array('fechadesde, fechahasta', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('idoferta, idtienda, nombre, descripcion, foto, numcanjeos, fechadesde, fechahasta, precio, codigocanjeo', 'safe', 'on'=>'search'),
+			array('idoferta, idtienda, nombre, descripcion, numcanjeos, fechadesde, fechahasta, precio, codigocanjeo', 'safe', 'on'=>'search'),
+
 		);
 	}
 
