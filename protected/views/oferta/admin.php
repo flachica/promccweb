@@ -49,6 +49,7 @@ or <b>=</b>) al principio de cada valor de búsqueda.
 	'columns'=>array(
 		'nombre',
 		'precio',
+        'preciobase',
         'fechadesde',
         'fechahasta',		
         'numcanjeos',

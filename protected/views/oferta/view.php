@@ -35,6 +35,7 @@ $this->menu=array(
 		'fechadesde',
 		'fechahasta',
 		'precio',
+		'preciobase',
 		'codigocanjeo',
 	),
 )); ?>

@@ -7,12 +7,14 @@
  * @property integer $idoferta
  * @property integer $idtienda
  * @property string $nombre
+ * @property string $nombretienda
  * @property string $descripcion
  * @property string $foto
  * @property integer $numcanjeos
  * @property string $fechadesde
  * @property string $fechahasta
  * @property double $precio
+ * @property double $preciobase
  * @property string $codigocanjeo
  *
  * The followings are the available model relations:
@@ -38,14 +40,14 @@ class Oferta extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('idtienda, numcanjeos', 'numerical', 'integerOnly'=>true),
-			array('precio', 'numerical'),
-			array('nombre, codigocanjeo', 'length', 'max'=>45),
+			array('precio, preciobase', 'numerical'),
+			array('nombre, nombretienda, codigocanjeo', 'length', 'max'=>45),
 			array('descripcion', 'length', 'max'=>4000),
-            array('foto', 'file', 'types'=>'jpg, gif, png'),
+            array('foto', 'file', 'types'=>'jpg, gif, png','allowEmpty'=>true),
 			array('fechadesde, fechahasta', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('idoferta, idtienda, nombre, descripcion, numcanjeos, fechadesde, fechahasta, precio, codigocanjeo', 'safe', 'on'=>'search'),
+			array('idoferta, idtienda, nombre, descripcion, numcanjeos, fechadesde, fechahasta, precio, preciobase, codigocanjeo', 'safe', 'on'=>'search'),
 
 		);
 	}
@@ -78,6 +80,7 @@ class Oferta extends CActiveRecord
 			'fechadesde' => 'Fechadesde',
 			'fechahasta' => 'Fechahasta',
 			'precio' => 'Precio',
+			'preciobase' => 'Precio Base',
 			'codigocanjeo' => 'Codigocanjeo',
 		);
 	}
@@ -109,6 +112,7 @@ class Oferta extends CActiveRecord
 		$criteria->compare('fechadesde',$this->fechadesde,true);
 		$criteria->compare('fechahasta',$this->fechahasta,true);
 		$criteria->compare('precio',$this->precio);
+		$criteria->compare('preciobase',$this->preciobase);
 		$criteria->compare('codigocanjeo',$this->codigocanjeo,true);
 
       //flachica: Miro el rol para ver si es tienda y solo mostrar la info autorizada

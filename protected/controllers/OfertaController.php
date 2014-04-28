@@ -68,12 +68,24 @@ class OfertaController extends RController
 
 		if (isset($_POST['Oferta'])) {
 			$model->attributes=$_POST['Oferta'];
-			$uploadedFile=CUploadedFile::getInstance($model,'foto');
-            $fileName = "{$uploadedFile}";  // nombre de archivo
-            $model->foto = $fileName;
+            $model->nombretienda = '<Sin Nombre>';
+            $idtienda = $_POST['Oferta']['idtienda'];
+            $sql = "select nombre
+                  from tienda
+                  where idtienda = '$idtienda'";
+            $command = Yii::app()->db->createCommand($sql);
+            $resulsetTienda = $command->query()->readAll();
+            $model->nombretienda = $resulsetTienda[0]['nombre'];
+
+            $uploadedFile=CUploadedFile::getInstance($model,'foto');
+            $fileName = Yii::app()->basePath . '/../images/' . "{$uploadedFile}";  // nombre de archivo
+            if (strlen($uploadedFile)>0)
+                $model->foto = Yii::app()->createAbsoluteUrl('') . '/../images/' . "{$uploadedFile}";;
             if ($model->save()) {
-                $uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$fileName);
-				$this->redirect(array('admin','id'=>$model->idoferta));
+                if (isset($uploadedFile))
+                    $uploadedFile->saveAs($fileName);
+				
+                $this->redirect(array('admin','id'=>$model->idoferta));
 			}
 		}
 
@@ -96,12 +108,23 @@ class OfertaController extends RController
 
 		if (isset($_POST['Oferta'])) {
 			$model->attributes=$_POST['Oferta'];
-            $model->foto = $_FILES['Oferta']['name']['foto'];
+            $model->nombretienda = '<Sin Nombre>';
+            $idtienda = $_POST['Oferta']['idtienda'];
+            $sql = "select nombre
+                  from tienda
+                  where idtienda = '$idtienda'";
+            $command = Yii::app()->db->createCommand($sql);
+            $resulsetTienda = $command->query()->readAll();
+            $model->nombretienda = $resulsetTienda[0]['nombre'];
+
+            if (strlen($_FILES['Oferta']['name']['foto'])>0)            
+                $model->foto = Yii::app()->createAbsoluteUrl('') . '/../images/' . $_FILES['Oferta']['name']['foto'];
+
             $uploadedFile=CUploadedFile::getInstance($model,'foto');
 			if ($model->save()) {
                 if(!empty($uploadedFile))  // checkeamos si el archivo subido esta seteado o no
                 {
-                    $uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$model->foto);
+                    $uploadedFile->saveAs(Yii::app()->basePath.'/../images/'. $_FILES['Oferta']['name']['foto']);
                 }
                 $this->redirect(array('admin','id'=>$model->idoferta));
 			}
