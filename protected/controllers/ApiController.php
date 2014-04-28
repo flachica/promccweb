@@ -193,6 +193,19 @@ class ApiController extends CController
             $criteria->addCondition('coalesce(numcanjeos,1) > 0 ');
             $criteria->addCondition("str_to_date(fechadesde, '%d/%m/%Y %H:%i:%s') <= now()");
             $criteria->addCondition("str_to_date(fechahasta, '%d/%m/%Y %H:%i:%s') >= now()");
+            $horas = $this->getParam('horas');
+            if ($horas != '' && $horas != '-1') {
+                if ($horas == '1')
+                    $criteria->addCondition("TIME_TO_SEC(TIMEDIFF(str_to_date(fechahasta, '%d/%m/%Y %H:%i:%s'),now())) <= 3600");
+                if ($horas == '2'){
+                    $criteria->addCondition("TIME_TO_SEC(TIMEDIFF(str_to_date(fechahasta, '%d/%m/%Y %H:%i:%s'),now())) <= 7200");
+                    $criteria->addCondition("TIME_TO_SEC(TIMEDIFF(str_to_date(fechahasta, '%d/%m/%Y %H:%i:%s'),now())) > 3600");
+                }
+                if ($horas == '3'){
+                    $criteria->addCondition("TIME_TO_SEC(TIMEDIFF(str_to_date(fechahasta, '%d/%m/%Y %H:%i:%s'),now())) <= 10800");
+                    $criteria->addCondition("TIME_TO_SEC(TIMEDIFF(str_to_date(fechahasta, '%d/%m/%Y %H:%i:%s'),now())) > 7200");
+                }
+            }
         } else if ($this->getParam('model') == "Centrocomercial") {
              $criteria->addCondition("idcentrocomercial in (select idcentrocomercial
                                     from tienda
