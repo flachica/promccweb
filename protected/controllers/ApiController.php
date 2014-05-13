@@ -240,6 +240,7 @@ class ApiController extends CController
 
                 $rows[count($rows)-1]['curLat'] = $this->getParam('curLat');
                 $rows[count($rows)-1]['curLon'] = $this->getParam('curLon');
+                $rows[count($rows)-1]['horas'] = $this->getParam('horas');
                 if (($this->getParam('model') == "Centrocomercial") || ($this->getParam('model') == "Tienda")){
                     $rows[count($rows)-1]['distancia'] = 
                             $this->distance(
@@ -392,6 +393,7 @@ class ApiController extends CController
                 $msg .= "<li>Attribute: $attribute</li>";
                 $msg .= "<ul>";
                 foreach($attr_errors as $attr_error) {
+
                     $msg .= "<li>$attr_error</li>";
                 }        
                 $msg .= "</ul>";
